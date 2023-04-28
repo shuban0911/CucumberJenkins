@@ -26,4 +26,3 @@ When User enters user and pass
 |username|password|
 |oct2022@abcd.com|shuban091112|
 When User clicks the login button
-

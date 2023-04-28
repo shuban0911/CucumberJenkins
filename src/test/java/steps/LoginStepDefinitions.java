@@ -3,13 +3,19 @@ package steps;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.*;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class LoginStepDefinitions {
@@ -27,10 +33,11 @@ public class LoginStepDefinitions {
 	
 	
 	@Given("User is on the page {string}")
-	public void user_is_on_the_page(String string) {
+	public void user_is_on_the_page(String string) throws Exception {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://login.salesforce.com/");
+		throw new Exception();
 	}
 	
 	@When("User enters user and pass")
@@ -82,6 +89,14 @@ public class LoginStepDefinitions {
 				driver.findElement(By.id("username")).sendKeys(rows.get(0).get(0));
 				driver.findElement(By.id("password")).sendKeys(rows.get(0).get(1));
 		    
+	}
+	
+	@After
+	public void teardown(Scenario scenario) {
+		TakesScreenshot takesScreenshot	= (TakesScreenshot)driver;
+		byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+		scenario.attach(screenshot,"image/png", scenario.getName());
+		
 	}
 
 }
