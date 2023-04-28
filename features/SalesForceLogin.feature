@@ -27,10 +27,4 @@ When User enters user and pass
 |oct2022@abcd.com|shuban091112|
 When User clicks the login button
 
-@data
-Scenario: Get data from datatable
 
-Given User is on the login page
-Then User enters logindetails
-|oct2022@abcd.com|shuban0911|
-When User clicks the login button
