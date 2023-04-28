@@ -36,7 +36,7 @@ public class LoginStepDefinitions {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://login.salesforce.com/");
-		throw new Exception();
+		//throw new Exception();
 	}
 	
 	@When("User enters user and pass")
