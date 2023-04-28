@@ -3,7 +3,6 @@ package steps;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -41,12 +40,15 @@ public class LoginStepDefinitions {
 	}
 	
 	@When("User enters user and pass")
-	public void user_enters_user_and_pass(io.cucumber.datatable.DataTable dataTable) {
+	public void user_enters_user_and_pass(io.cucumber.datatable.DataTable dataTable) throws Exception {
 	  List<Map<String, String>> credentials = dataTable.asMaps();
 	  System.out.println(credentials.get(0).get("username"));
 	  System.out.println(credentials.get(0).get("password"));
 	  driver.findElement(By.id("username")).sendKeys(credentials.get(0).get("username"));
 	  driver.findElement(By.id("password")).sendKeys(credentials.get(0).get("password"));
+
+
+		throw new Exception();
 	}
 	
 	
