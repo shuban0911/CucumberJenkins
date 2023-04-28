@@ -8,13 +8,13 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin= {"pretty","html:target/cucumber-reports/cucumber.html",
 		                            "json:target/cucumber-reports/cucumber.json"},
-                 features="src/test/resources/features",
-                 glue= "steps",
-                 monochrome = true,
-                 //dryRun=true
-                 tags="@ex"
+                 features={"features"},
+                 glue= {"steps"},
+                 monochrome = true
+                 //,dryRun=true
+                 //tags="@ex1"
                  )
 
-public class TestRunner {
+public class Runner {
 
 }
